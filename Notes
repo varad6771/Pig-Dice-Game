@@ -1,0 +1,27 @@
+document.querySelector('#current-' + activePlayer).textContent = dice; --sets text
+document.querySelector('#current-' + activePlayer).innerHTML = '<em><b>' + dice + '</b></em>'; --sets interpreted html
+
+var global1 = document.querySelector('#score-' + activePlayer).textContent;
+
+document.querySelector('.player-0-panel').classList.remove('active');
+
+
+var: The scope of a variable defined with the keyword “var” is limited to the “function” within which it is defined. If it is defined outside any function, the scope of the variable is global.
+var is “function scoped”.
+
+let: The scope of a variable defined with the keyword “let” or “const” is limited to the “block” defined by curly braces i.e. {} .
+“let” and “const” are“block scoped”.
+
+const: The scope of a variable defined with the keyword “const” is limited to the block defined by curly braces. However if a variable is defined with keyword const, it cannot be reassigned.
+“const” cannot be re-assigned to a new value. However it CAN be mutated.
+
+// in renderer process
+const { ipcRenderer } = require('electron');
+ipcRenderer.send('request-update-label-in-second-window', Data);
+
+// in main process
+ipcMain.on('request-update-label-in-second-window', (event, arg) => {
+	console.log(arg) // input from renderer process
+    // Request to update the label in the renderer process of the second window
+    secondWindow.webContents.send('action-update-label', arg);
+});
